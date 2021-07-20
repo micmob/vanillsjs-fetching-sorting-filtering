@@ -8,7 +8,7 @@ const fetchData = async () => {
         return json;
     }
 
-    return null;
+    return -1;
 };
 
 const sortData = (data, property, order) => {
@@ -45,6 +45,10 @@ const filterData = (data, keyword) =>
 
 const main = async () => {
     const data = await fetchData();
+    if (data === -1) {
+        console.log('An error occured.');
+        return;
+    }
     console.log('Fetched data:', data);
     console.log('Sorted data:', sortData(data, 'id', 'asc'));
     console.log('Filtered data:', filterData(data, 'g'));
